@@ -1,0 +1,29 @@
+<script setup lang="ts">
+import type { Order } from "@/interfaces/Order";
+
+const props = defineProps<{
+    name: string,
+    price: number
+}>()
+
+const emit = defineEmits<{
+    addOrder: [order: Order]
+}>()
+
+function sendOrder() {
+
+    const orderToSend: Order = { name: props.name, price: props.price }
+    emit('addOrder', orderToSend);
+}
+
+</script>
+
+<template>
+    <article class="d-flex gap-1">
+        <p>{{ name }}</p>
+        <p>{{ price }}</p>
+        <input type="button" @click="sendOrder" value="Add to Cart">
+    </article>
+</template>
+
+<style scoped></style>

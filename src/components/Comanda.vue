@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Order } from "@/interfaces/Order";
+import Currency from "./Currency.vue";
 
 const props = defineProps<{
     name: string,
@@ -21,7 +22,7 @@ function sendOrder() {
 <template>
     <article class="d-flex gap-1">
         <p>{{ name }}</p>
-        <p>{{ price }}</p>
+        <Currency :price="price"></Currency>
         <input type="button" @click="sendOrder" value="Add to Cart">
     </article>
 </template>

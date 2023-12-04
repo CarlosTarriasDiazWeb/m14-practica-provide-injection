@@ -12,7 +12,6 @@ const emit = defineEmits<{
 }>()
 
 function sendOrder() {
-
     const orderToSend: Order = { name: props.name, price: props.price }
     emit('addOrder', orderToSend);
 }
@@ -22,7 +21,8 @@ function sendOrder() {
 <template>
     <article class="d-flex gap-1">
         <p>{{ name }}</p>
-        <Currency :price="price"></Currency>
+        <span>{{ price.toFixed(2) }}</span>
+        <Currency></Currency>
         <input type="button" @click="sendOrder" value="Add to Cart">
     </article>
 </template>

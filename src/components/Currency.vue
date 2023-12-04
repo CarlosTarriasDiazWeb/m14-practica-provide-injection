@@ -8,16 +8,12 @@ import { currencyKey } from "@/injection_keys/injection_keys";
 //AMB PROPS
 // const currencyValue = ref("$");
 
-const props = defineProps<{
-    price: number
-}>()
-
 const currencyValue = inject<string>(currencyKey);
 
 </script>
 
 <template>
-    <span>{{ currencyValue }} {{ price.toFixed(2) }}</span>
+    <span>{{ currencyValue }}</span>
 </template>
 
 <style scoped></style>

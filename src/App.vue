@@ -23,9 +23,9 @@ function showStoreAlert(order: Order) {
 
 function currencyConversion(oldCurrency: string, newCurrency: string) {
   if (oldCurrency === "$" && newCurrency === "€") {
-    orders.value = orders.value.map(order => ({ ...order, price: order.price * 0.92 }));
+    orders.value = orders.value.map(order => ({ ...order, price: order.price * 0.920 }));
   } else if (oldCurrency === "€" && newCurrency === "$") {
-    orders.value = orders.value.map(order => ({ ...order, price: order.price * 1.09 }));
+    orders.value = orders.value.map(order => ({ ...order, price: order.price * 1.090 }));
   }
 }
 const orderName: Ref<string> = ref("");
@@ -40,7 +40,7 @@ provide(currencyKey, currency);
 
 let orders = ref<Order[]>(
   [
-    { name: "Hamburger 🍔.", price: 5.01 },
+    { name: "Hamburger 🍔.", price: 5.00 },
     { name: "Cheeseburger 🧀", price: 6.00 },
     { name: "Impossible Burger 🥕", price: 7.00 },
     { name: "Fries 🍟", price: 2.00 }

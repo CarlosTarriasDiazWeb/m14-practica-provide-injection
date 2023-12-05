@@ -4,7 +4,7 @@ import Currency from "./Currency.vue";
 
 const props = defineProps<{
     name: string,
-    price: number
+    price: string
 }>()
 
 const emit = defineEmits<{
@@ -21,7 +21,7 @@ function sendOrder() {
 <template>
     <article class="d-flex gap-1">
         <p>{{ name }}</p>
-        <span>{{ price.toFixed(2) }}</span>
+        <span>{{ price }}</span>
         <Currency></Currency>
         <input type="button" @click="sendOrder" value="Add to Cart">
     </article>

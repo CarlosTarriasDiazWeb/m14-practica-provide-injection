@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { reactive, ref, watch, type Ref } from 'vue';
+import { ref, watch, type Ref } from 'vue';
 import type { Order } from "@/interfaces/Order";
 import Comanda from './components/Comanda.vue';
 import { provide } from 'vue';
-import type { InjectionKey } from "vue";
 import { currencyKey } from "@/injection_keys/injection_keys";
 
 function showOrderAlert() {
@@ -23,9 +22,9 @@ function showStoreAlert(order: Order) {
 
 function currencyConversion(oldCurrency: string, newCurrency: string) {
   if (oldCurrency === "$" && newCurrency === "€") {
-    orders.value = orders.value.map(order => ({ ...order, price: order.price * 0.920 }));
+    orders.value = orders.value.map(order => ({ ...order, price: (Number(order.price) * 0.92).toFixed(1) }));
   } else if (oldCurrency === "€" && newCurrency === "$") {
-    orders.value = orders.value.map(order => ({ ...order, price: order.price * 1.090 }));
+    orders.value = orders.value.map(order => ({ ...order, price: (Number(order.price) * 1.09).toFixed(1) }));
   }
 }
 const orderName: Ref<string> = ref("");
@@ -40,10 +39,10 @@ provide(currencyKey, currency);
 
 let orders = ref<Order[]>(
   [
-    { name: "Hamburger 🍔.", price: 5.00 },
-    { name: "Cheeseburger 🧀", price: 6.00 },
-    { name: "Impossible Burger 🥕", price: 7.00 },
-    { name: "Fries 🍟", price: 2.00 }
+    { name: "Hamburger 🍔.", price: '5.00' },
+    { name: "Cheeseburger 🧀", price: '6.00' },
+    { name: "Impossible Burger 🥕", price: '7.00' },
+    { name: "Fries 🍟", price: '2.00' }
   ]
 );
 

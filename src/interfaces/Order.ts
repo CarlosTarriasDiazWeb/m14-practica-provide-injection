@@ -1,4 +1,4 @@
 export interface Order {
     name: string,
-    price: number
+    price: string
 }
